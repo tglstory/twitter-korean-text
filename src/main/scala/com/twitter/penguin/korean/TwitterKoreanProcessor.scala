@@ -23,6 +23,7 @@ import com.twitter.penguin.korean.phrase_extractor.KoreanPhraseExtractor
 import com.twitter.penguin.korean.stemmer.KoreanStemmer
 import com.twitter.penguin.korean.stemmer.KoreanStemmer.StemmedTextWithTokens
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer
+import com.twitter.penguin.korean.tokenizer.KoreanScorer
 import com.twitter.penguin.korean.tokenizer.KoreanTokenizer.KoreanToken
 
 /**
@@ -126,6 +127,10 @@ object TwitterKoreanProcessor {
 
   def extractPhrases(text: CharSequence, filterSpam: Boolean = false): Seq[CharSequence] = {
     KoreanPhraseExtractor.extractPhrases(text, filterSpam)
+  }
+
+  def score(text: CharSequence, keepSpace:Boolean=false): Seq[Float] = {
+      KoreanScorer.score(text, keepSpace)
   }
 
   /**
